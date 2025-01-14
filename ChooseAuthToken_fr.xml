@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthenticateResponse xmlns="http://citrix.com/authentication/response/1">
+<Status>success</Status>
+<Result>more-info</Result>
+<StateContext/>
+<AuthenticationRequirements>
+<PostBack>/nf/auth/doAuthentication.do</PostBack>
+<CancelPostBack>/nf/auth/doLogoff.do</CancelPostBack>
+<CancelButtonText>Cancel</CancelButtonText>
+<Requirements>
+<Requirement>
+<Credential><Type>none</Type></Credential>
+<Label><Text id="authTitle">Choisissez votre méthode d'authentification</Text><Type>heading</Type></Label>
+<Input/>
+</Requirement>
+<Requirement>
+<Credential><ID>btnToken</ID><Type>none</Type></Credential>
+<Label><Type>none</Type></Label>
+<Input><Button>Avec Jeton</Button></Input>
+</Requirement>
+<Requirement>
+<Credential><Type>none</Type></Credential>
+<Label><Text></Text><Type>plain</Type></Label>
+<Input/>
+</Requirement>
+<Requirement>
+<Credential><ID>btnNoToken</ID><Type>none</Type></Credential>
+<Label><Type>none</Type></Label>
+<Input><Button>Sans Jeton</Button></Input>
+</Requirement>
+</Requirements>
+</AuthenticationRequirements>
+</AuthenticateResponse>
