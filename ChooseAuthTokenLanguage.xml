@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthenticateResponse xmlns="http://citrix.com/authentication/response/1">
+<Status>success</Status>
+<Result>more-info</Result>
+<StateContext/>
+<AuthenticationRequirements>
+<PostBack>/nf/auth/doAuthentication.do</PostBack>
+<CancelPostBack>/nf/auth/doLogoff.do</CancelPostBack>
+<CancelButtonText>Cancel</CancelButtonText>
+<Requirements>
+<Requirement>
+<Credential><Type>none</Type></Credential>
+<Label><Text id="authTitle">Choose your authentication method</Text><Type>heading</Type></Label>
+<Input/>
+</Requirement>
+<Requirement>
+<Credential><ID>btnToken</ID><Type>none</Type></Credential>
+<Label><Type>none</Type></Label>
+<Input><Button>With Token</Button></Input>
+</Requirement>
+<Requirement>
+<Credential><Type>none</Type></Credential>
+<Label><Text></Text><Type>plain</Type></Label>
+<Input/>
+</Requirement>
+<Requirement>
+<Credential><ID>btnNoToken</ID><Type>none</Type></Credential>
+<Label><Type>none</Type></Label>
+<Input><Button>Without Token</Button></Input>
+</Requirement>
+</Requirements>
+<CustomUI>
+<Script>
+<![CDATA[
+    document.addEventListener('DOMContentLoaded', function () {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang.startsWith('fr')) {
+            setLanguage('fr');
+        } else {
+            setLanguage('en');
+        }
+    });
+
+    function setLanguage(lang) {
+        const title = document.getElementById('authTitle');
+        const tokenButton = document.getElementById('btnToken');
+        const noTokenButton = document.getElementById('btnNoToken');
+
+        if (lang === 'fr') {
+            title.textContent = 'Choisissez votre méthode d\'authentification';
+            tokenButton.textContent = 'Avec Jeton';
+            noTokenButton.textContent = 'Sans Jeton';
+        } else {
+            title.textContent = 'Choose your authentication method';
+            tokenButton.textContent = 'With Token';
+            noTokenButton.textContent = 'Without Token';
+        }
+    }
+]]>
+</Script>
+</CustomUI>
+</AuthenticationRequirements>
+</AuthenticateResponse>
